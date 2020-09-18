@@ -1,0 +1,40 @@
+//Given an array of elements of length N, ranging from 0 to N – 1.
+//All elements may not be present in the array. If element is not present then there will be -1 present in the array.
+//Rearrange the array such that A[i] = i and if i is not present, display -1 at that place.
+
+//The C++ code goes here...
+//By Ashish Jangir ...
+
+#include <iostream>
+
+using namespace std;
+
+void fix(int a[],int n)
+{
+    int y,temp;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]!=-1 && a[i]!=i)
+        {
+            //swapping
+            temp = a[i];
+            a[i] = a[temp];
+            a[temp] = temp;
+            i=i-1;
+        }
+    }
+    for (int j = 0; j < n; j++) 
+        cout << a[j] << " ";
+        cout<<endl;
+    
+}
+
+int main()
+{
+    int A[] = {-1, -1, 6, 1, 9, 3, 2, -1, 4, -1}; 
+  
+    int len = sizeof(A) / sizeof(A[0]); 
+    fix(A, len); 
+
+    return 0;
+}
