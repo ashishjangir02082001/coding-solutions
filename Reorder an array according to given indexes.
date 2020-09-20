@@ -1,0 +1,51 @@
+//Given two integer arrays of same size, “arr[]” and “index[]”, reorder elements in “arr[]” according to given index array.
+//It is not allowed to given array arr’s length.
+
+//The C++ code goes here...
+//By Ashish Jangir ...
+
+#include <iostream>
+
+using namespace std;
+
+void reorder(int arr[], int ind[], int n)
+{
+    int temp1,temp2;
+    for(int i=0;i<n;i++)
+    {
+        if(ind[i]==i)
+        continue;
+        
+        else if(ind[i]!=i)
+        {
+            temp1=arr[ind[i]];
+            arr[ind[i]]=arr[i];
+            arr[i]=temp1;
+            
+            temp2 = ind[ind[i]];
+            ind[ind[i]]=ind[i];
+            ind[i]=temp2;
+            
+            i--;
+        }
+    }
+}
+
+int main()
+{
+    int arr[] = {50, 40, 70, 60, 90}; 
+    int index[] = {3,  0,  4,  1,  2};
+    int n = sizeof(arr)/sizeof(arr[0]); 
+  
+    reorder(arr, index, n); 
+  
+    cout << "Reordered array is: \n"; 
+    for (int i=0; i<n; i++) 
+        cout << arr[i] << " "; 
+  
+    cout << "\nModified Index array is: \n"; 
+    for (int i=0; i<n; i++) 
+        cout << index[i] << " "; 
+
+    return 0;
+}
