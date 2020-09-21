@@ -1,0 +1,50 @@
+//Given an array of distinct elements. The task is to find triplets in the array whose sum is zero.
+//The C++ code goes here ...
+//By Ashish Jangir ...
+
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+void findTriplets(int a[], int n)
+{
+    int l,r,x,found = 0;
+    //sort the std::array
+    sort(a,a+n);
+    
+    for(int i=0;i<n;i++)
+    {
+        l=i+1;
+        r=n-1;
+        x=a[i];
+        while(l<r)
+        {
+        if(x+a[l]+a[r] == 0)
+        {
+            cout<<"( " <<x <<", " <<a[l] <<", "<<a[r]<<") ";
+            l++;
+            r--;
+            found++;
+        }
+        else if(x+a[l]+a[r] < 0)
+        {
+            l++;
+        }
+        else
+        {
+            r--;
+        }
+        }
+    }
+    if(found == 0)
+    cout<<"No triplets found !!!";
+}
+
+int main()
+{
+    int arr[] = {0, -1, 2, -3, 1}; 
+    int n = sizeof(arr)/sizeof(arr[0]); 
+    findTriplets(arr, n); 
+
+    return 0;
+}
