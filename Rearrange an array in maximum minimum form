@@ -1,0 +1,49 @@
+//Given a sorted array of positive integers, rearrange the array alternately i.e first element should be the maximum value,
+//second minimum value, third-second max, fourth-second min and so on.
+
+//The C++ code goes here ...
+//By Ashish Jangir ...
+
+#include <iostream>
+using namespace std;
+
+void rearrange(int a[], int n)
+{
+    int max_element = a[n-1] + 1;
+    int min = 0,max = n-1;
+    for(int i=0;i<n;i++)
+    {
+        if(i%2==0)
+        {
+            a[i]+=(a[max]%max_element)*max_element;
+            max--;
+        }
+        else
+        {
+            a[i] += (a[min]%max_element)*max_element ;
+            min++;
+        }
+    }
+    for(int i=0;i<n;i++)
+    {
+        a[i] = a[i]/max_element;
+    }
+}
+
+int main()
+{
+    int arr[] = { 1, 2, 9, 14, 15, 20, 23, 65, 80, 90 }; 
+	int n = sizeof(arr) / sizeof(arr[0]); 
+
+	cout << "Original Arrayn"; 
+	for (int i = 0; i < n; i++) 
+		cout << arr[i] << " "; 
+
+	rearrange(arr, n); 
+
+	cout << "\nModified Array\n"; 
+	for (int i = 0; i < n; i++) 
+		cout << arr[i] << " "; 
+
+    return 0;
+}
