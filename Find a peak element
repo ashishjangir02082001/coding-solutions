@@ -1,0 +1,33 @@
+//Given an array of integers. Find a peak element in it.
+//An array element is a peak if it is NOT smaller than its neighbours.
+//For corner elements, we need to consider only one neighbour.
+
+//The C++ code goes here ...
+By Ashish Jangir ...
+
+
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int findPeak(int a[], int n)
+{
+    if(a[0]>a[1])
+    return a[0];
+    if(a[n-1]>a[n-2])
+    return a[n-1];
+    for(int i=1;i<n-2;i++)
+    {
+        if(a[i]>a[i-1] && a[i]>a[i+1])
+        return a[i];
+    }
+}
+
+int main()
+{
+    int arr[] = { 1, 5, 15, 24, 23, 90, 67}; 
+    int n = sizeof(arr) / sizeof(arr[0]); 
+    cout << "Peak element is "<< findPeak(arr, n);
+
+    return 0;
+}
