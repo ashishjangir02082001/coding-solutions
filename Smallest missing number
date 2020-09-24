@@ -1,0 +1,32 @@
+//Given a sorted array of n distinct integers where each integer is in the range from 0 to m-1 and m > n.
+//Find the smallest number that is missing from the array.
+
+//The C++ code goes here ...
+//By Ashish Jangir ...
+
+#include <iostream>
+
+int findFirstMissing(int a[], int l, int h)
+{
+    if(a[0]!=0)
+        return 0;
+    
+    for(int i=0;i<h;i++)
+    {
+        if(a[i+1]-a[i]!=1)
+        {
+            return a[i]+1;
+        }
+    }
+}
+
+using namespace std;
+
+int main()
+{
+    int arr[] = {0, 1, 2, 3, 4, 5, 6, 7, 10}; 
+    int n = sizeof(arr)/sizeof(arr[0]); 
+    cout << "Smallest missing element is " << findFirstMissing(arr, 0, n-1) << endl;
+
+    return 0;
+}
