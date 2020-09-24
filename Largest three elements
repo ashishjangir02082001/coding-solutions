@@ -1,0 +1,36 @@
+//Given an array with all distinct elements, find the largest three elements. Expected time complexity is O(n) and extra space is O(1). 
+
+//The C++ code goes here ...
+//By Ashish Jangir ...
+
+#include <bits/stdc++.h> 
+using namespace std;
+
+void find3largest(int arr[],int n)
+{
+    sort(arr,arr+n);
+    int count = 1,check = 0;
+    for(int i=n-1;;i--)
+    {
+        if(count<=3)
+        {
+            if(check!=arr[i])
+            {
+                check=arr[i];
+                count++;
+                cout<<check<<" ";
+            }
+        }
+        else
+        break;
+    }
+}
+
+int main()
+{
+   int arr[] = { 12, 45, 1, -1, 45, 54, 23, 5, 0, -10 }; 
+    int n = sizeof(arr) / sizeof(arr[0]); 
+    cout<<"The largest three numbers are : ";
+    find3largest(arr, n); 
+    return 0;
+}
