@@ -1,0 +1,36 @@
+//Given a sorted array of n distinct integers where each integer is in the range from 0 to m-1 and m > n.
+//Find the smallest number that is missing from the array.
+
+//Improvised solution in O(log(n)) time complexity.
+
+//The C++ code goes here ...
+//By Ashish Jangir ...
+
+#include <iostream>
+
+int findFirstMissing(int a[], int l, int r)
+{
+    if(a[l]!=l)
+        return l;
+    
+    int mid;
+    
+        mid = (l+r)/2;
+        
+        if(a[mid]==mid)
+            return findFirstMissing(a, mid+1, r);
+        
+        return findFirstMissing(a, l, mid);
+}
+
+using namespace std;
+
+int main()
+{
+    int arr[] = {0, 1, 2, 3, 4,5, 6, 7, 10}; 
+    int n = sizeof(arr)/sizeof(arr[0]); 
+    cout << "Smallest missing element is " << findFirstMissing(arr, 0, n-1) << endl;
+
+    return 0;
+}
+First Missing El
