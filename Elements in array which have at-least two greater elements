@@ -1,0 +1,45 @@
+//Given an array of n distinct elements, the task is to find all elements in array which have at-least two greater elements than themselves.
+//Example :- Input  : arr[] = {7, -2, 3, 4, 9, -1};
+//          Output : -2  3  4 -1 
+
+//The C++ code goes here ...
+//By Ashish Jangir ...
+
+#include <bits/stdc++.h> 
+using namespace std;
+
+void findElements(int a[], int n)
+{
+    int first = INT_MIN, second = INT_MIN;
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]>first)
+        {
+            second=first;
+            first=a[i];
+        }
+        else if(a[i]>second)
+        {
+            second=a[i];
+        }
+    }
+    
+    for(int i=0;i<n;i++)
+    {
+        if(a[i]<second)
+        cout<<a[i]<<" ";
+    }
+    
+}
+
+int main()
+{
+    int arr[] = { 2, -6, 3, 5, 1, 10, -20, 34, -8}; 
+    int n = sizeof(arr) / sizeof(arr[0]); 
+    findElements(arr, n); 
+    return 0;
+}
+
+
+
+
