@@ -1,0 +1,42 @@
+//Consider an array of string and find duplicate words in that array and print that duplicate words if exist.
+
+//The C++ code goes here ...
+//By Ashish Jangir ...
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void printDuplicates(vector<string> words)
+{
+    vector<string> duplicate;
+    
+    sort(words.begin(), words.end());
+    
+    for(int i=1;i<words.size();i++)
+    {
+        if(words[i-1] == words[i])
+        {
+            duplicate.push_back(words[i]);
+        }
+    }
+    
+    int i=0;
+    cout<<duplicate.size()<<" duplicate elements are found : "<<endl;
+    
+    for(i=0;i<duplicate.size();++i)
+    {
+        cout<<duplicate[i]<<endl;
+    }
+    
+    if(i==0)
+    cout<<"No duplicates found !!!";
+}
+
+int main()
+{
+    std::vector<string> words{"ashish", "as", "is", "am", "is", "good", "ashish"} ;
+    
+    printDuplicates(words);
+
+    return 0;
+}
